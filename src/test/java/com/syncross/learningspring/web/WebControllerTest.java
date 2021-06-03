@@ -7,9 +7,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @ExtendWith(SpringExtension.class) // 확장을 선언적으로 등록하는 데 사용되며 상속됨.
 @WebMvcTest(controllers = WebController.class) // MVC 위주의 테스트용. 주로 컨트롤러 쪽
@@ -24,5 +26,19 @@ public class WebControllerTest {
         mvc.perform(get("/hello")) // /hello 주소로 GET 요청을 보냄
            .andExpect(status().isOk()) // 상태값이 200인지 검증
            .andExpect(content().string(resultValue)); // 본문이 resultValue와 맞는지 확인
+    }
+
+    @Test
+    public void returnDto() throws Exception {
+        String name = "test";
+        int amount = 10;
+
+        // param: 파라미터를 설정함, 그러나 문자열이어야 함.
+        // jsonpath: JSON 응답을 $를 기준으로 필드별로 검증할 수 있음.
+        mvc.perform(get("/hello/dto").param("name", name)
+                                     .param("amount", String.valueOf(amount)))
+           .andExpect((status().isOk()))
+           .andExpect(jsonPath("$.name", is(name)))
+           .andExpect(jsonPath("$.amount", is(amount)));
     }
 }
