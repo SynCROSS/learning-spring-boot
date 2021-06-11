@@ -36,7 +36,7 @@ public class PostsApiControllerTest {
     }
     
     @Test
-    public void addPost() throws Exception {
+    public void addPostTest() throws Exception {
         String title = "title";
         String content = "content";
         
