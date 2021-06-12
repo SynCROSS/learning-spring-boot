@@ -2,7 +2,7 @@ package com.syncross.learningspring.web;
 
 import com.syncross.learningspring.domain.posts.Posts;
 import com.syncross.learningspring.domain.posts.PostsRepository;
-import com.syncross.learningspring.web.dto.PostsDto;
+import com.syncross.learningspring.web.dto.SavePostsDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PostsApiControllerTest {
+public class PostsControllerTest {
     @LocalServerPort
     private int port;
     
@@ -40,7 +40,7 @@ public class PostsApiControllerTest {
         String title = "title";
         String content = "content";
         
-        PostsDto postsDto = PostsDto.builder()
+        SavePostsDto savePostsDto = SavePostsDto.builder()
                                     .title(title)
                                     .content(content)
                                     .author("SynCROSS")
@@ -49,7 +49,7 @@ public class PostsApiControllerTest {
         final String URL = "http://localhost:" + port + "/api/v1/posts";
         
         ResponseEntity<Long> responseEntity
-                = testRestTemplate.postForEntity(URL, postsDto, Long.class);
+                = testRestTemplate.postForEntity(URL, savePostsDto, Long.class);
         
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
