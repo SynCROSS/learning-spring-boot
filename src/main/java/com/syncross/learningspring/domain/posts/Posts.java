@@ -1,5 +1,6 @@
 package com.syncross.learningspring.domain.posts;
 
+import com.syncross.learningspring.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,7 @@ import javax.persistence.GenerationType;
 @Getter // 클래스 내 모든 필드 의 get 메소드 생성
 @NoArgsConstructor //  기본 생성자 자동 추가
 @Entity // 테이블
-public class Posts {
-    
+public class Posts extends BaseTimeEntity {
     @Id // PK
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto-increment
     private Long id;
