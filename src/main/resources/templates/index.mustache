@@ -1,14 +1,30 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Spring Boot Web Service</title>
-</head>
-<body>
-    <h1>Starting Web Service with Spring Boot</h1>
-</body>
-</html>
+{{>layout/header}}
+<h1>Starting Web Service with Spring Boot</h1>
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-6">
+      <a href="/posts/save" role="button" class="btn btn-primary">Add Post</a>
+    </div>
+  </div>
+  <table class="table table-horizontal table-bordered">
+    <thead class="thread-strong">
+      <tr>
+        <th>No.</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Last Modified Date</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      {{#posts}} <!-- posts라는 List를 순회함 == for -->
+      <tr>
+        <td>{{id}}</td> <!-- List의 컬럼명 -->
+        <td>{{title}}</td>
+        <td>{{author}}</td>
+        <td>{{modifiedDate}}</td>
+      </tr>
+      {{/posts}}
+    </tbody>
+  </table>
+</div>
+{{>layout/footer}}
