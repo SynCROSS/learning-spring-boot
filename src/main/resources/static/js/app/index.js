@@ -2,13 +2,13 @@ const init = () => {
   try {
     document
       .getElementById('save-btn')
-      .addEventListener('click', () => savePosts());
+      .addEventListener('click', () => savePost());
   } catch (e) {
     console.error(e);
   }
 };
 
-const savePosts = () => {
+const savePost = () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const content = document.getElementById('content').value;
@@ -17,6 +17,21 @@ const savePosts = () => {
     .post('/api/v1/posts', { title, author, content })
     .then(() => {
       alert('Adding Post is Successful');
+      location.href = '/';
+    })
+    .catch(window.alert);
+};
+
+const updatePost = () => {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+
+  const id = document.getElementById('id').value;
+
+  axios
+    .put('/api/v1/posts/' + id, { title, author })
+    .then(() => {
+      alert('Updating Post is Successful');
       location.href = '/';
     })
     .catch(window.alert);

@@ -19,7 +19,9 @@
       {{#posts}} <!-- posts라는 List를 순회함 == for -->
       <tr>
         <td>{{id}}</td> <!-- List의 컬럼명 -->
-        <td>{{title}}</td>
+        <td>
+          <a href="/posts/update/{{id}}"> {{title}} </a>
+        </td>
         <td>{{author}}</td>
         <td>{{modifiedDate}}</td>
       </tr>
@@ -27,4 +29,5 @@
     </tbody>
   </table>
 </div>
+
 {{>layout/footer}}
