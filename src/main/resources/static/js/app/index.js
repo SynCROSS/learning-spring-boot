@@ -3,6 +3,9 @@ const init = () => {
     document
       .getElementById('save-btn')
       .addEventListener('click', () => savePost());
+    document
+      .getElementById('update-btn')
+      .addEventListener('click', () => updatePost());
   } catch (e) {
     console.error(e);
   }
