@@ -34,6 +34,14 @@ public class PostsService {
         return id;
     }
     
+    @Transactional
+    public void deletePost(Long id) {
+        Posts posts = postsRepository.findById(id)
+                                     .orElseThrow(() -> new IllegalArgumentException(
+                                             "해당 게시글이 없습니다. 게시글 id: " + id));
+        postsRepository.delete(posts);
+    }
+    
     public PostsResponseDto findPostsById(Long id) {
         Posts posts = postsRepository.findById(id)
                                      .orElseThrow(() -> new IllegalArgumentException(

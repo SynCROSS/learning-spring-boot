@@ -1,43 +1,67 @@
 const init = () => {
   try {
-    document
-      .getElementById('save-btn')
-      .addEventListener('click', () => savePost());
-    document
-      .getElementById('update-btn')
-      .addEventListener('click', () => updatePost());
+    const saveButton = document?.getElementById('save-btn');
+    const updateButton = document?.getElementById('update-btn');
+    const deleteButton = document?.getElementById('delete-btn');
+
+    updateButton?.addEventListener('click', () => updatePost());
+    saveButton?.addEventListener('click', () => savePost());
+    deleteButton?.addEventListener('click', () => deletePost());
   } catch (e) {
     console.error(e);
   }
 };
 
 const savePost = () => {
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const content = document.getElementById('content').value;
+  try {
+    const title = document?.getElementById('title').value;
+    const author = document?.getElementById('author').value;
+    const content = document?.getElementById('content').value;
 
-  axios
-    .post('/api/v1/posts', { title, author, content })
-    .then(() => {
-      alert('Adding Post is Successful');
-      location.href = '/';
-    })
-    .catch(window.alert);
+    axios
+      .post('/api/v1/posts', { title, author, content })
+      .then(() => {
+        alert('Adding Post is Successful');
+        window.location.href = '/';
+      })
+      .catch(window.alert);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 const updatePost = () => {
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
+  try {
+    const title = document?.getElementById('title').value;
+    const author = document?.getElementById('author').value;
+    const id = document?.getElementById('id').value;
 
-  const id = document.getElementById('id').value;
+    axios
+      .put('/api/v1/posts/' + id, { title, author })
+      .then(() => {
+        alert('Updating Post is Successful');
+        window.location.href = '/';
+      })
+      .catch(window.alert);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
-  axios
-    .put('/api/v1/posts/' + id, { title, author })
-    .then(() => {
-      alert('Updating Post is Successful');
-      location.href = '/';
-    })
-    .catch(window.alert);
+const deletePost = () => {
+  try {
+    const id = document?.getElementById('id').value;
+
+    axios
+      .delete('/api/v1/posts/' + id)
+      .then(() => {
+        alert('Deleting Post is Successful');
+        window.location.href = '/';
+      })
+      .catch(window?.alert);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 init();
