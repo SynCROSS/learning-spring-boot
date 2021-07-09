@@ -4,6 +4,19 @@
   <div class="row">
     <div class="col-md-6">
       <a href="/posts/save" role="button" class="btn btn-primary">Add Post</a>
+      &nbsp; {{#userName}} Hi, <span id="user">{{userName}}</span> &nbsp;
+      <a href="/logout" class="btn btn-info active" role="button">Log out</a> <!-- 스프링 시큐리티에서 기본적으로 제공하는 로그아웃 URL -->
+      {{/userName}} &nbsp; 
+      {{^userName}} <!-- if(userName==null) -->
+      <!-- 스프링 시큐리티에서 기본적으로 제공하는 로그인 URL -->
+      <a
+        href="/oauth2/authorization/google"
+        class="btn btn-success active"
+        role="button"
+      >
+        Login with Google
+      </a>
+      {{/userName}}
     </div>
   </div>
   <table class="table table-horizontal table-bordered">
@@ -16,9 +29,11 @@
       </tr>
     </thead>
     <tbody id="tbody">
-      {{#posts}} <!-- posts라는 List를 순회함 == for -->
+      {{#posts}}
+      <!-- posts라는 List를 순회함 == for -->
       <tr>
-        <td>{{id}}</td> <!-- List의 컬럼명 -->
+        <td>{{id}}</td>
+        <!-- List의 컬럼명 -->
         <td>
           <a href="/posts/update/{{id}}"> {{title}} </a>
         </td>
