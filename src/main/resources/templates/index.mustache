@@ -6,16 +6,27 @@
       <a href="/posts/save" role="button" class="btn btn-primary">Add Post</a>
       &nbsp; {{#userName}} Hi, <span id="user">{{userName}}</span> &nbsp;
       <a href="/logout" class="btn btn-info active" role="button">Log out</a> <!-- 스프링 시큐리티에서 기본적으로 제공하는 로그아웃 URL -->
-      {{/userName}} &nbsp; 
-      {{^userName}} <!-- if(userName==null) -->
+      {{/userName}} &nbsp;
+      {{^userName}}<!-- if(userName==null) -->
       <!-- 스프링 시큐리티에서 기본적으로 제공하는 로그인 URL -->
       <a
         href="/oauth2/authorization/google"
-        class="btn btn-success active"
+        class="btn active"
         role="button"
+        style="border: 1px solid #4285F4"
       >
         Login with Google
       </a>
+
+      <a
+        href="/oauth2/authorization/naver"
+        class="btn active"
+        role="button"
+        style="border: 1px solid #03C75A"
+      >
+        Login with Naver
+      </a>
+
       {{/userName}}
     </div>
   </div>
