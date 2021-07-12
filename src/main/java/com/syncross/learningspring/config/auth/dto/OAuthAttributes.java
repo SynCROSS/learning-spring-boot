@@ -40,7 +40,7 @@ public class OAuthAttributes {
         if (registrationId.equals("naver")) {
             return ofNaver("id", attributes);
         }
-        return OAuthAttributes.ofGoogle(userNameAttributeName, attributes);
+        return ofGoogle(userNameAttributeName, attributes);
     }
     
     private static OAuthAttributes ofGoogle(
