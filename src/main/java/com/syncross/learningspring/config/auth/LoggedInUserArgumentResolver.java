@@ -32,6 +32,6 @@ public class LoggedInUserArgumentResolver implements HandlerMethodArgumentResolv
             NativeWebRequest webRequest,
             WebDataBinderFactory binderFactory
     ) throws Exception {
-        return httpSession.getAttribute("User");
+        return httpSession.getAttribute("user");
     }
 }
