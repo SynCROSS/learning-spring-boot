@@ -17,6 +17,22 @@ before_install:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  - zip -r learning-spring-boot *
+  - mkdir -p deploy
+  - mv learning-spring-boot.zip deploy/learning-spring-boot.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis CI ACCESS_KEY 변수명
+    secret_access_key: $AWS_SECRET_KEY # Travis CI SECRET_KEY 변수명
+    bucket: community-spring-build
+    region: ap-northeast-2 # AWS 리전
+    skip_cleanup: true
+    acl: private # zip 파일 접근: private
+    local_dir: deploy # before_deploy에서 만든 폴더
+    wait_until_deployed : true
+
 # CI 실행 완료 시 메일로 알람
 notifications:
   email:
