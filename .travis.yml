@@ -33,6 +33,17 @@ deploy:
     local_dir: deploy # before_deploy에서 만든 폴더
     wait-until-deployed: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis CI ACCESS_KEY 변수명
+    secret_access_key: $AWS_SECRET_KEY # Travis CI SECRET_KEY 변수명
+    bucket: community-spring-build
+    key: community-with-spring-boot.zip
+    bundle_type: zip
+    application: community-with-spring-boot
+    deployment_group: community-with-spring-boot-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+
 # CI 실행 완료 시 메일로 알람
 notifications:
   email:
