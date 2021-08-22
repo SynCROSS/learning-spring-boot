@@ -1,4 +1,4 @@
-version: 0.0 # 프로젝트 버전이 아니므로 0.0이 아니면 오류 발생
+version: 0.0 # CodeDeploy가 프로젝트 버전이 아니므로 0.0이 아니면 오류 발생
 os: linux
 files:
   - source: / #destination으로 이동시킬 대상은 파일 전체

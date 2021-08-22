@@ -8,7 +8,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Check PID of Running Application"
 
-CURRENT_PID=$(pgrep -fl $PROJECT_NAME | grep jar | awk '{print $1}') # 같은 이름의 프로세스 중 jar 프로세스에서 선택
+CURRENT_PID=$(pgrep -fl $PROJECT_NAME | grep java | awk '{print $1}') # 같은 이름의 프로세스 중 jar 프로세스에서 선택
 echo "PID of Running Application: $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then

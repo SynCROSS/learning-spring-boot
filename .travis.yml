@@ -32,10 +32,10 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY # Travis CI SECRET_KEY 변수명
     bucket: community-spring-build
     region: ap-northeast-2 # AWS 리전
-    skip_cleanup: true
+    cleanup: true
     acl: private # zip 파일 접근: private
     local_dir: deploy # before_deploy에서 만든 폴더
-    wait-until-deployed: true
+    wait_until_deployed: true
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY # Travis CI ACCESS_KEY 변수명
@@ -46,7 +46,7 @@ deploy:
     application: community-with-spring-boot
     deployment_group: community-with-spring-boot-group
     region: ap-northeast-2
-    wait-until-deployed: true
+    wait_until_deployed: true
 
 # CI 실행 완료 시 메일로 알람
 notifications:
