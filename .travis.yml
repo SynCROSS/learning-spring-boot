@@ -37,9 +37,9 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY # Travis CI ACCESS_KEY 변수명
     secret_access_key: $AWS_SECRET_KEY # Travis CI SECRET_KEY 변수명
     bucket: community-spring-build
-    key: learning-spring-boot.zip
+    key: community-with-spring-boot.zip
     bundle_type: zip
-    application: learning-spring-boot
+    application: community-with-spring-boot
     deployment_group: community-with-spring-boot-group
     region: ap-northeast-2
     wait-until-deployed: true
