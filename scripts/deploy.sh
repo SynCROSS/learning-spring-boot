@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ex2-user/app/step2
+REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=learning-spring-boot
 
 echo "> Copy Build File"
