@@ -21,7 +21,7 @@ fi
 
 echo "> Deploy New Application"
 
-JAR_NAME=$(find $REPOSITORY/ -maxdepth 1 -name "*.jar" | tail -n 1)
+JAR_NAME=$(ls -tr $REPOSITORY/*.jar  | tail -n 1)
 echo "> JAR Name: $JAR_NAME"
 
 echo "> Grant Execution Privilege To '$JAR_NAME' $"
