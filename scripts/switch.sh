@@ -6,7 +6,7 @@ ABSDIR=$(dirname "$ABSPATH") # stop.sh 경로 찾기 => profile.sh을 찾기 위
 source "${ABSDIR}"/profile.sh # 유사 import, 적용 또는 사용(?)
 
 function switch_proxy() {
-    IDLE_PORT=$(find_idle_port)
+    IDLE_PORT=$(find_idle_profile_port)
 
     echo "> Port 2 B Switched: $IDLE_PORT"
     echo "> Switch Port"

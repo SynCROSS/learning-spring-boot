@@ -6,7 +6,7 @@ ABSDIR=$(dirname "$ABSPATH") # stop.sh 경로 찾기 => profile.sh을 찾기 위
 source "${ABSDIR}"/profile.sh # 유사 import, 적용 또는 사용(?)
 source "${ABSDIR}"/switch.sh
 
-IDLE_PORT=$(find_idle_port)
+IDLE_PORT=$(find_idle_profile_port)
 
 echo "> Check If Spring Boot Was Executed Successfully"
 echo "> curl -s http://localhost:$IDLE_PORT/profile"
