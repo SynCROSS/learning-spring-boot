@@ -2,7 +2,7 @@ version: 0.0 # CodeDeploy가 프로젝트 버전이 아니므로 0.0이 아니�
 os: linux
 files:
   - source: / #destination으로 이동시킬 대상은 파일 전체
-    destination: /home/ec2-user/app/step2/zip/
+    destination: /home/ec2-user/app/step3/zip/
     overwrite: yes
 
 permissions:
@@ -12,7 +12,15 @@ permissions:
     group: ec2-user
 
 hooks:
+  AfterInstall:
+    - location: stop.sh #NGINX와 연결되지 않은 실행 중인 스프링 부트 종료
+      timeout: 60
+      runas: ec2-user
   ApplicationStart:
-    - location: deploy.sh
+    - location: start.sh # stop.sh로 종료한 'profile'로 실행
+      timeout: 60
+      runas: ec2-user
+  ValidateService:
+    - location: check.sh
       timeout: 60
       runas: ec2-user

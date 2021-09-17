@@ -11,7 +11,7 @@ CURRENT_PID=$(pgrep -fl learning-spring | grep java | awk '{print $1}') # 같은
 echo "PID of Running Application: $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then
-  echo ">No Applications Are Currently Running & Will NOT Shut Down"
+  echo "> No Applications Are Currently Running & Will NOT Shut Down"
 else
   echo "> kill -15 $CURRENT_PID"
   kill -15 "$CURRENT_PID"
