@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ABSPATH=$(readlink -f "$0") # 현재 파일 위치 반환
+ABSPATH=$(readlink -f -- "$0") # 현재 파일 위치 반환
 ABSDIR=$(dirname "$ABSPATH") # stop.sh 경로 찾기 => profile.sh을 찾기 위해, 부모 경로 반환
 
 source "${ABSDIR}"/profile.sh # 유사 import, 적용 또는 사용(?)
