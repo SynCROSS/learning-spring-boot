@@ -1,16 +1,3 @@
-const init = () => {
-  try {
-    const saveButton = document?.getElementById('save-btn');
-    const updateButton = document?.getElementById('update-btn');
-    const deleteButton = document?.getElementById('delete-btn');
-
-    updateButton?.addEventListener('click', () => updatePost());
-    saveButton?.addEventListener('click', () => savePost());
-    deleteButton?.addEventListener('click', () => deletePost());
-  } catch (e) {
-    console.error(e);
-  }
-};
 
 const savePost = () => {
   try {
@@ -59,6 +46,20 @@ const deletePost = () => {
         window.location.href = '/';
       })
       .catch(window?.alert);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const init = () => {
+  try {
+    const saveButton = document?.getElementById('save-btn');
+    const updateButton = document?.getElementById('update-btn');
+    const deleteButton = document?.getElementById('delete-btn');
+
+    updateButton?.addEventListener('click', () => updatePost());
+    saveButton?.addEventListener('click', () => savePost());
+    deleteButton?.addEventListener('click', () => deletePost());
   } catch (e) {
     console.error(e);
   }
