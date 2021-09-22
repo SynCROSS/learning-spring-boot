@@ -105,13 +105,10 @@ public class PostsControllerTest {
                                                       .content(updatedContent)
                                                       .build();
         
-        final String URL = "http://localhost:" +
-                           port +
-                           "/api/v1/posts/" +
-                           updateTargetId;
-    
+        final String URL = "http://localhost:" + port + "/api/v1/posts/" + updateTargetId;
+        
         mvc.perform(put(URL).contentType(MediaType.APPLICATION_JSON)
-                             .content(new ObjectMapper().writeValueAsString(updatePostsDto)))
+                            .content(new ObjectMapper().writeValueAsString(updatePostsDto)))
            .andExpect(status().isOk());
         
         List<Posts> allPosts = postsRepository.findAll();

@@ -30,7 +30,10 @@ public class PostsController {
     public Long updatePost(
             @PathVariable Long id, @RequestBody UpdatePostsDto updatePostsDto
     ) {
-        return postsService.updatePost(id, updatePostsDto);
+        return postsService.updatePost(
+                id,
+                updatePostsDto
+        );
     }
     
     @GetMapping("api/v1/posts/{id}")
